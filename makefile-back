@@ -1,0 +1,22 @@
+#注释
+#显示规则
+#目标文件：依赖文件
+#[TAB]指令
+#
+#use value
+# %.c any .c     *.c  all .c
+
+test:*.o
+	gcc *.o -o test
+	
+*.o:*.c
+	gcc -c *.c -o *.o
+
+
+
+#.PHONY:
+#clean:
+#	rm -rf hello.o hello.S hello.i hello
+
+
+	

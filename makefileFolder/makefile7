@@ -1,0 +1,15 @@
+src = $(wildcard ./src/*.c) #./src/add.c sub.c div1.c hello.c
+obj = $(patsubst ./src/%.c, ./obj/%.o, $(src)) #/obj/add.o sub.o div1.o hello.o
+CFLAGS = -g
+inc_path=./inc
+myArgs= -Wall -g -I
+ALL:a.out
+
+a.out:$(obj)
+	gcc $^ -o $@ $(myArgs) $(inc_path)
+$(obj):./obj/%.o:./src/%.c
+	gcc -c $< -o $@ $(myArgs) $(inc_path)
+
+clean:
+	-rm -rf $(obj) a.out
+.PHONY:clean ALL
